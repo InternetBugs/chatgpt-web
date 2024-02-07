@@ -92,9 +92,9 @@ export async function initApi(key: KeyConfig, chatModel: string, maxContextCount
       options.maxResponseTokens = 1500
     }
     else if (model.toLowerCase().includes('internlm2')) {
-      // If it's a 'internlm2' model, set the maxModelTokens and maxResponseTokens to 128000 and 32000 respectively
-      options.maxModelTokens = 128000
-      options.maxResponseTokens = 32000
+      // If it's a 'internlm2' model, set the maxModelTokens and maxResponseTokens to 32000 and 8000 respectively
+      options.maxModelTokens = 32000
+      options.maxResponseTokens = 8000
     }
     else {
       // If none of the above, use the default values, set the maxModelTokens and maxResponseTokens to 8192 and 2048 respectively

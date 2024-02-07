@@ -58,21 +58,21 @@ export async function initApi(key: KeyConfig, chatModel: string, maxContextCount
 
     // Set the token limits based on the model's type. This is because different models have different token limits.
     // The token limit includes the token count from both the message array sent and the model response.
-    // 'gpt-35-turbo' has a limit of 4096 tokens, 'gpt-4' and 'gpt-4-32k' have limits of 8192 and 32768 tokens respectively.
-    // Check if the model type is GPT-4-turbo
-    if (model.toLowerCase().includes('1106-preview')) {
-      // If it's a '1106-preview' model, set the maxModelTokens to 131072
-      options.maxModelTokens = 131072
-      options.maxResponseTokens = 32768
+    // Check if the model type is GPT-4-turbo, 0125-preview or 1106-preview
+    if (model.toLowerCase().includes('gpt-4-turbo') || model.toLowerCase().includes('0125-preview') || model.toLowerCase().includes('1106-preview')) {
+      // If it's a 'gpt-4-turbo', '0125-preview', or '1106-preview' model, set the maxModelTokens to 128000
+      options.maxModelTokens = 128000
+      options.maxResponseTokens = 32000
     }
-    // Check if the model type includes '16k'
-    if (model.toLowerCase().includes('16k')) {
-      // If it's a '16k' model, set the maxModelTokens to 16384 and maxResponseTokens to 4096
+    // Check if the model type includes '16k', '0125' or '1106'
+    if (model.toLowerCase().includes('16k') || model.toLowerCase().includes('0125') || model.toLowerCase().includes('1106')) {
+      // If it's a '16k', '0125', or '1106' model, set the maxModelTokens to 16384 and maxResponseTokens to 4096
+      // warning: 16k model will not be supported by OpenAI any more
       options.maxModelTokens = 16384
       options.maxResponseTokens = 4096
     }
-    else if (model.toLowerCase().includes('32k')) {
-      // If it's a '32k' model, set the maxModelTokens to 32768 and maxResponseTokens to 8192
+    else if (model.toLowerCase().includes('32k') || model.toLowerCase().includes('gemini-pro')) {
+      // If it's a '32k' model or 'gemini-pro' model, set the maxModelTokens to 32768 and maxResponseTokens to 8192
       options.maxModelTokens = 32768
       options.maxResponseTokens = 8192
     }
@@ -80,6 +80,21 @@ export async function initApi(key: KeyConfig, chatModel: string, maxContextCount
       // If it's a 'gpt-4' model, set the maxModelTokens and maxResponseTokens to 8192 and 2048 respectively
       options.maxModelTokens = 8192
       options.maxResponseTokens = 2048
+    }
+    else if (model.toLowerCase().includes('qwen-max-longcontext')) {
+      // If it's a 'qwen-max-longcontext' model, set the maxModelTokens and maxResponseTokens to 28000 and 7000 respectively
+      options.maxModelTokens = 28000
+      options.maxResponseTokens = 7000
+    }
+    else if (model.toLowerCase().includes('qwen-max')) {
+      // If it's a 'qwen-max' model, set the maxModelTokens and maxResponseTokens to 6000 and 1500 respectively
+      options.maxModelTokens = 6000
+      options.maxResponseTokens = 1500
+    }
+    else if (model.toLowerCase().includes('internlm2')) {
+      // If it's a 'internlm2' model, set the maxModelTokens and maxResponseTokens to 200000 and 50000 respectively
+      options.maxModelTokens = 200000
+      options.maxResponseTokens = 50000
     }
     else {
       // If none of the above, use the default values, set the maxModelTokens and maxResponseTokens to 8192 and 2048 respectively

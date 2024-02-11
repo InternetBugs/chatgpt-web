@@ -64,15 +64,13 @@ export async function initApi(key: KeyConfig, chatModel: string, maxContextCount
       options.maxModelTokens = 128000
       options.maxResponseTokens = 32000
     }
-    // Check if the model type includes '16k', '0125' or '1106'
-    if (model.toLowerCase().includes('16k') || model.toLowerCase().includes('0125') || model.toLowerCase().includes('1106')) {
-      // If it's a '16k', '0125', or '1106' model, set the maxModelTokens to 16384 and maxResponseTokens to 4096
-      // warning: 16k model will not be supported by OpenAI any more
+    if (model.toLowerCase().includes('gpt-3.5-turbo')) {
+      // If it's a 'gpt-3.5-turbo' model, set the maxModelTokens to 16384 and maxResponseTokens to 4096
       options.maxModelTokens = 16384
       options.maxResponseTokens = 4096
     }
-    else if (model.toLowerCase().includes('32k') || model.toLowerCase().includes('gemini-pro')) {
-      // If it's a '32k' model or 'gemini-pro' model, set the maxModelTokens to 32768 and maxResponseTokens to 8192
+    else if (model.toLowerCase().includes('gpt-4-copilot') || model.toLowerCase().includes('gemini-pro')) {
+      // If it's a 'gpt-4-copilot' model or 'gemini-pro' model, set the maxModelTokens to 32768 and maxResponseTokens to 8192
       options.maxModelTokens = 32768
       options.maxResponseTokens = 8192
     }

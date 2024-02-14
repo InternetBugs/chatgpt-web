@@ -69,8 +69,8 @@ export async function initApi(key: KeyConfig, chatModel: string, maxContextCount
       options.maxModelTokens = 16384
       options.maxResponseTokens = 4096
     }
-    else if (model.toLowerCase().includes('gpt-4-copilot') || model.toLowerCase().includes('gemini-pro')) {
-      // If it's a 'gpt-4-copilot' model or 'gemini-pro' model, set the maxModelTokens to 32768 and maxResponseTokens to 8192
+    else if (model.toLowerCase().includes('gemini-pro')) {
+      // If it's a 'gemini-pro' model, set the maxModelTokens to 32768 and maxResponseTokens to 8192
       options.maxModelTokens = 32768
       options.maxResponseTokens = 8192
     }

@@ -58,9 +58,9 @@ export async function initApi(key: KeyConfig, chatModel: string, maxContextCount
 
     // Set the token limits based on the model's type. This is because different models have different token limits.
     // The token limit includes the token count from both the message array sent and the model response.
-    // Check if the model type is GPT-4-turbo, 0125-preview or 1106-preview
-    if (model.toLowerCase().includes('gpt-4-turbo') || model.toLowerCase().includes('0125-preview') || model.toLowerCase().includes('1106-preview')) {
-      // If it's a 'gpt-4-turbo', '0125-preview', or '1106-preview' model, set the maxModelTokens to 128000
+    // Check if the model type is GPT-4-turbo, 0125-preview glm, or 1106-preview
+    if (model.toLowerCase().includes('gpt-4-turbo') || model.toLowerCase().includes('glm'))|| model.toLowerCase().includes('0125-preview') || model.toLowerCase().includes('1106-preview')) {
+      // If it's a 'gpt-4-turbo', '0125-preview', 'glm', or '1106-preview' model, set the maxModelTokens to 128000
       options.maxModelTokens = 128000
       options.maxResponseTokens = 32000
     }

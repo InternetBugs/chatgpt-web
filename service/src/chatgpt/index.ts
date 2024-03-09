@@ -58,44 +58,39 @@ export async function initApi(key: KeyConfig, chatModel: string, maxContextCount
 
     // Set the token limits based on the model's type. This is because different models have different token limits.
     // The token limit includes the token count from both the message array sent and the model response.
-    // Check if the model type is GPT-4-turbo, 0125-preview glm, or 1106-preview
     if (model.toLowerCase().includes('gpt-4-turbo') || model.toLowerCase().includes('glm') || model.toLowerCase().includes('0125-preview') || model.toLowerCase().includes('1106-preview')) {
-      // If it's a 'gpt-4-turbo', '0125-preview', 'glm', or '1106-preview' model, set the maxModelTokens to 128000
       options.maxModelTokens = 128000
       options.maxResponseTokens = 32000
     }
     if (model.toLowerCase().includes('gpt-3.5-turbo')) {
-      // If it's a 'gpt-3.5-turbo' model, set the maxModelTokens to 16384 and maxResponseTokens to 4096
       options.maxModelTokens = 16384
       options.maxResponseTokens = 4096
     }
     else if (model.toLowerCase().includes('gemini-pro')) {
-      // If it's a 'gemini-pro' model, set the maxModelTokens to 32768 and maxResponseTokens to 8192
       options.maxModelTokens = 30720
       options.maxResponseTokens = 2048
     }
+		else if (model.toLowerCase().includes('copilot')) {
+      options.maxModelTokens = 32768
+      options.maxResponseTokens = 8192
+    }
     else if (model.toLowerCase().includes('gpt-4')) {
-      // If it's a 'gpt-4' model, set the maxModelTokens and maxResponseTokens to 8192 and 2048 respectively
       options.maxModelTokens = 8192
       options.maxResponseTokens = 2048
     }
     else if (model.toLowerCase().includes('qwen-max-longcontext')) {
-      // If it's a 'qwen-max-longcontext' model, set the maxModelTokens and maxResponseTokens to 28000 and 7000 respectively
       options.maxModelTokens = 28000
       options.maxResponseTokens = 7000
     }
     else if (model.toLowerCase().includes('qwen-max')) {
-      // If it's a 'qwen-max' model, set the maxModelTokens and maxResponseTokens to 6000 and 1500 respectively
       options.maxModelTokens = 6000
       options.maxResponseTokens = 1500
     }
     else if (model.toLowerCase().includes('internlm2')) {
-      // If it's a 'internlm2' model, set the maxModelTokens and maxResponseTokens to 32000 and 8000 respectively
       options.maxModelTokens = 32000
       options.maxResponseTokens = 8000
     }
     else {
-      // If none of the above, use the default values, set the maxModelTokens and maxResponseTokens to 8192 and 2048 respectively
       options.maxModelTokens = 4096
       options.maxResponseTokens = 1024
     }

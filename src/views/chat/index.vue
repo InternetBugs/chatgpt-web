@@ -54,7 +54,7 @@ const showPrompt = ref(false)
 const nowSelectChatModel = ref<string | null>(null)
 const currentChatModel = computed(() => nowSelectChatModel.value ?? currentChatHistory.value?.chatModel ?? userStore.userInfo.config.chatModel)
 
-const isVisionModel = computed(() => currentChatModel.value && currentChatModel.value?.includes('vision'))
+const isVisionModel = computed(() => currentChatModel.value && (currentChatModel.value.includes('vision') || currentChatModel.value.includes('claude-3')))
 
 let loadingms: MessageReactive
 let allmsg: MessageReactive

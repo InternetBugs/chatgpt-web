@@ -72,10 +72,6 @@ export async function initApi(key: KeyConfig, chatModel: string, maxContextCount
       options.maxModelTokens = 30720
       options.maxResponseTokens = 2048
     }
-		else if (model.toLowerCase().includes('copilot')) {
-      options.maxModelTokens = 32768
-      options.maxResponseTokens = 8192
-    }
     else if (model.toLowerCase().includes('gpt-4')) {
       options.maxModelTokens = 8192
       options.maxResponseTokens = 2048

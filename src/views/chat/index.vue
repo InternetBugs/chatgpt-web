@@ -56,7 +56,6 @@ const currentChatModel = computed(() => nowSelectChatModel.value ?? currentChatH
 
 const isVisionModel = computed(() => currentChatModel.value && (currentChatModel.value.includes('vision') || currentChatModel.value.includes('claude-3') || currentChatModel.value.includes('coze')))
 
-
 let loadingms: MessageReactive
 let allmsg: MessageReactive
 let prevScrollTop: number

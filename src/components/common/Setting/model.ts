@@ -32,6 +32,7 @@ export class SiteConfig {
   chatModels?: string
   globalAmount?: number
   usageCountLimit?: boolean
+  showWatermark?: boolean
 }
 
 export class MailConfig {
@@ -40,6 +41,7 @@ export class MailConfig {
   smtpTsl?: boolean
   smtpUserName?: string
   smtpPassword?: string
+  smtpFrom?: string
 }
 export type TextAuditServiceProvider = 'baidu' //  | 'ali'
 

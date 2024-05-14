@@ -54,7 +54,10 @@ export async function getOriginConfig() {
         !Number.isNaN(+process.env.SMTP_PORT) ? +process.env.SMTP_PORT : 465,
         process.env.SMTP_TSL === 'true',
         process.env.SMTP_USERNAME,
-        process.env.SMTP_PASSWORD))
+        process.env.SMTP_PASSWORD,
+        process.env.SMTP_FROM || process.env.SMTP_USERNAME,
+      ),
+    )
   }
   else {
     if (config.siteConfig.loginEnabled === undefined)
@@ -99,7 +102,7 @@ export async function getOriginConfig() {
 
   if (!config.advancedConfig) {
     config.advancedConfig = new AdvancedConfig(
-      'You are ChatGPT, a large language model trained by OpenAI. Follow the user\'s instructions carefully.Respond using markdown.',
+      'You are ChatGPT, a large language model trained by OpenAI. Follow the user\'s instructions carefully.Respond using markdown (latex start with $).',
       0.8,
       1,
       20,

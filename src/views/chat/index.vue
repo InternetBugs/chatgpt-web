@@ -56,7 +56,7 @@ const currentChatModel = computed(() => nowSelectChatModel.value ?? currentChatH
 
 const currentNavIndexRef = ref<number>(-1)
 
-const isVisionModel = computed(() => currentChatModel.value && (currentChatModel.value.includes('vision') || currentChatModel.value.includes('claude-3') || currentChatModel.value.includes('gpt-4-turbo')))
+const isVisionModel = computed(() => currentChatModel.value && (currentChatModel.value.includes('vision') || currentChatModel.value.includes('claude-3') || currentChatModel.value.includes('gpt-4-turbo') || currentChatModel.value.includes('gpt-4o')) && !currentChatModel.value.includes('duck'))
 
 let loadingms: MessageReactive
 let allmsg: MessageReactive

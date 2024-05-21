@@ -94,6 +94,10 @@ export async function initApi(key: KeyConfig, chatModel: string, maxContextCount
       options.maxModelTokens = 32000
       options.maxResponseTokens = 8000
     }
+		else if (model.toLowerCase().includes('ERNIE-Speed-128K')) {
+      options.maxModelTokens = 124000
+      options.maxResponseTokens = 4096
+    }
     else {
       options.maxModelTokens = 4096
       options.maxResponseTokens = 1024

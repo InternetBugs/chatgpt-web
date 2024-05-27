@@ -59,7 +59,7 @@ export async function initApi(key: KeyConfig, chatModel: string, maxContextCount
     // The token limit includes the token count from both the message array sent and the model response.
     if (model.toLowerCase().includes('gpt-4-turbo') || model.toLowerCase().includes('glm') || model.toLowerCase().includes('0125-preview') || model.toLowerCase().includes('1106-preview') || model.toLowerCase().includes('gpt-4o')) {
       options.maxModelTokens = 128000
-      options.maxResponseTokens = 32000
+      options.maxResponseTokens = 4096
     }
     else if (model.toLowerCase().includes('gpt-3.5-turbo')) {
       options.maxModelTokens = 16384

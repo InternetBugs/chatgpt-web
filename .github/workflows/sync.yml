@@ -5,8 +5,8 @@ permissions:
 
 on:
   schedule:
-    - cron: "0 0 * * *" # every day
-  workflow_dispatch:
+    - cron: '0 0 * * *' # every day
+  workflow_dispatch: {}
 
 jobs:
   sync_latest_from_upstream:
@@ -31,3 +31,4 @@ jobs:
 
           # Set test_mode true to run tests instead of the true action!!
           test_mode: false
+          

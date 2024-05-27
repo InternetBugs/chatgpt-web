@@ -61,11 +61,11 @@ export async function initApi(key: KeyConfig, chatModel: string, maxContextCount
       options.maxModelTokens = 128000
       options.maxResponseTokens = 32000
     }
-    if (model.toLowerCase().includes('gpt-3.5-turbo')) {
+    else if (model.toLowerCase().includes('gpt-3.5-turbo')) {
       options.maxModelTokens = 16384
       options.maxResponseTokens = 4096
     }
-		else if (model.toLowerCase().includes('gemini-1.5')) {
+    else if (model.toLowerCase().includes('gemini-1.5')) {
       options.maxModelTokens = 1048576
       options.maxResponseTokens = 8192
     }
@@ -85,15 +85,15 @@ export async function initApi(key: KeyConfig, chatModel: string, maxContextCount
       options.maxModelTokens = 6000
       options.maxResponseTokens = 1500
     }
-		else if (model.toLowerCase().includes('claude')) {
+    else if (model.toLowerCase().includes('claude')) {
       options.maxModelTokens = 2000000
       options.maxResponseTokens = 4096
     }
-		else if (model.toLowerCase().includes('qwen1.5')) {
+    else if (model.toLowerCase().includes('qwen1.5')) {
       options.maxModelTokens = 32000
       options.maxResponseTokens = 8000
     }
-		else if (model.toLowerCase().includes('ERNIE-Speed-128K')) {
+    else if (model.toLowerCase().includes('ERNIE-Speed-128K')) {
       options.maxModelTokens = 124000
       options.maxResponseTokens = 4096
     }

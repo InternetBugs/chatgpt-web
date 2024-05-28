@@ -83,7 +83,7 @@ export async function initApi(key: KeyConfig, chatModel: string, maxContextCount
     }
     else if (model.toLowerCase().includes('qwen-max')) {
       options.maxModelTokens = 6000
-      options.maxResponseTokens = 1500
+      options.maxResponseTokens = 2000
     }
     else if (model.toLowerCase().includes('claude')) {
       options.maxModelTokens = 2000000

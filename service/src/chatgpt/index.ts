@@ -99,7 +99,7 @@ export async function initApi(key: KeyConfig, chatModel: string, maxContextCount
     }
 		else if (model.toLowerCase().includes('moonshot-v1-128k')) {
       options.maxModelTokens = 128000
-      options.maxResponseTokens = 128000
+      options.maxResponseTokens = 4096
 		}
     else {
       options.maxModelTokens = 4096

@@ -57,9 +57,13 @@ export async function initApi(key: KeyConfig, chatModel: string, maxContextCount
 
     // Set the token limits based on the model's type. This is because different models have different token limits.
     // The token limit includes the token count from both the message array sent and the model response.
-    if (model.toLowerCase().includes('gpt-4-turbo') || model.toLowerCase().includes('glm') || model.toLowerCase().includes('0125-preview') || model.toLowerCase().includes('1106-preview') || model.toLowerCase().includes('gpt-4o')) {
+    if (model.toLowerCase().includes('gpt-4-turbo') || model.toLowerCase().includes('0125-preview') || model.toLowerCase().includes('1106-preview') || model.toLowerCase().includes('gpt-4o')) {
       options.maxModelTokens = 128000
       options.maxResponseTokens = 4096
+    }
+		if (model.toLowerCase().includes('glm4')) {
+      options.maxModelTokens = 128000
+      options.maxResponseTokens = 8000
     }
     else if (model.toLowerCase().includes('gpt-3.5-turbo')) {
       options.maxModelTokens = 16384
@@ -98,8 +102,8 @@ export async function initApi(key: KeyConfig, chatModel: string, maxContextCount
       options.maxResponseTokens = 4096
     }
     else if (model.toLowerCase().includes('moonshot-v1-128k')) {
-      options.maxModelTokens = 128000
-      options.maxResponseTokens = 4096
+      options.maxModelTokens = 131072
+      options.maxResponseTokens = 131072
     }
     else {
       options.maxModelTokens = 4096
